@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Route } from 'react-router-dom'
 import { TabBar } from 'antd-mobile'
 
-import './index.css'
+import './index.scss'
 
 import News from '../News'
 import Index from '../Index'
