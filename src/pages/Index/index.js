@@ -48,6 +48,7 @@ export default class Index extends React.Component {
     isSwiperLoaded: false,
     groups: [],
     news: [],
+    curCityName: '上海',
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -62,6 +63,12 @@ export default class Index extends React.Component {
     this.getSwipers()
     this.getGroups()
     this.getNews()
+
+    const curCity = new window.BMap.LocalCity()
+    curCity.get(async res => {
+      const result = await axios.get(`http://localhost:8080/area/info?name=${res.name}`)
+      this.setState({ curCityName: result.data.body.label})
+    })
   }
 
   async getSwipers() {
@@ -149,7 +156,7 @@ export default class Index extends React.Component {
           <Flex className="search-box">
             <Flex className="search">
               <div className="location" onClick={() => this.props.history.push('/citylist')}>
-                <span className="name">Shenzhen</span>
+                <span className="name">{this.state.curCityName}</span>
                 <i className="iconfont icon-arrow" />
               </div>
               <div className="form" onClick={() => this.props.history.push('/search')}>
