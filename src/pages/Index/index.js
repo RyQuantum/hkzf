@@ -1,7 +1,8 @@
 import React from 'react'
-import { Carousel, Flex, Grid, WingBlank } from "antd-mobile";
-
+import { Carousel, Flex, Grid, WingBlank } from 'antd-mobile';
 import axios from 'axios'
+
+import { getCurrentCity } from '../../utils';
 
 import Nav1 from '../../assets/images/nav-1.png'
 import Nav2 from '../../assets/images/nav-2.png'
@@ -37,18 +38,13 @@ const navs = [
   },
 ]
 
-// const data = Array.from(new Array(4)).map((_val, i) => ({
-//   icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
-//   text: `name${i}`,
-// }));
-
 export default class Index extends React.Component {
   state = {
     swipers: [],
     isSwiperLoaded: false,
     groups: [],
     news: [],
-    curCityName: '上海',
+    curCityName: '',
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -59,16 +55,13 @@ export default class Index extends React.Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.getSwipers()
     this.getGroups()
     this.getNews()
 
-    const curCity = new window.BMap.LocalCity()
-    curCity.get(async res => {
-      const result = await axios.get(`http://localhost:8080/area/info?name=${res.name}`)
-      this.setState({ curCityName: result.data.body.label})
-    })
+    const curCity = await getCurrentCity();
+    this.setState({ curCityName: curCity.label })
   }
 
   async getSwipers() {
