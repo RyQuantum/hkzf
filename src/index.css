@@ -1,5 +1,7 @@
 html, body {
-  height: 100%;
+  margin: 0;
+  padding: 0;
+  /*height: 100%;*/
   font-family: 'Microsoft YaHei';
   color: #333;
   background-color: #fff;
@@ -10,6 +12,10 @@ html, body {
   touch-action: pan-y;
 }
 
-h2, p {
+h2, h3, p {
   margin: 0;
+}
+
+html, body, #root, .App {
+  height: 100%;
 }
