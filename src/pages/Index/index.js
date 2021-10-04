@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, Flex, Grid } from "antd-mobile";
+import { Carousel, Flex, Grid, WingBlank } from "antd-mobile";
 
 import axios from 'axios'
 
@@ -46,7 +46,8 @@ export default class Index extends React.Component {
   state = {
     swipers: [],
     isSwiperLoaded: false,
-    groups: []
+    groups: [],
+    news: [],
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -60,6 +61,7 @@ export default class Index extends React.Component {
   componentDidMount() {
     this.getSwipers()
     this.getGroups()
+    this.getNews()
   }
 
   async getSwipers() {
@@ -79,6 +81,11 @@ export default class Index extends React.Component {
     this.setState({
       groups: res.data.body
     })
+  }
+
+  async getNews() {
+    const res = await axios.get('http://localhost:8080/home/news?area=AREA%7C88cff55c-aaa4-e2e0')
+    this.setState({ news: res.data.body })
   }
 
   renderSwipers() {
@@ -109,6 +116,23 @@ export default class Index extends React.Component {
     ))
   }
 
+  renderNews() {
+    return this.state.news.map(item => (
+      <div className="news-item" key={item.id}>
+        <div className="imgwrap">
+          <img className="img" src={`http://localhost:8080${item.imgSrc}`} alt="" />
+        </div>
+        <Flex className="content" direction="column" justify="between">
+          <h3 className="title">{item.title}</h3>
+          <Flex className="info" justify="between">
+            <span>{item.from}</span>
+            <span>{item.date}</span>
+          </Flex>
+        </Flex>
+      </div>
+    ))
+  }
+
   render() {
     return (
       <div className="index">
@@ -122,7 +146,21 @@ export default class Index extends React.Component {
               {this.renderSwipers()}
             </Carousel>
           ) : ''}
+          <Flex className="search-box">
+            <Flex className="search">
+              <div className="location" onClick={() => this.props.history.push('/citylist')}>
+                <span className="name">Shenzhen</span>
+                <i className="iconfont icon-arrow" />
+              </div>
+              <div className="form" onClick={() => this.props.history.push('/search')}>
+                <i className="iconfont icon-search" />
+                <span className="text">BLK/BLVD name or address</span>
+              </div>
+            </Flex>
+            <i className="iconfont icon-map" onClick={() => this.props.history.push('/map')} />
+          </Flex>
         </div>
+
         <Flex className="nav">{this.renderNavs()}</Flex>
 
         <div className="group">
@@ -144,6 +182,11 @@ export default class Index extends React.Component {
               </Flex>
             )}
           />
+        </div>
+
+        <div className="news">
+          <h3 className="group-title">Latest news</h3>
+          <WingBlank size="md">{this.renderNews()}</WingBlank>
         </div>
       </div>
     );
