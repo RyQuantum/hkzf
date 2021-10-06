@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './index.scss'
+import NavHeader from '../../components/NavHeader'
 
 export default class Map extends React.Component {
 
@@ -13,6 +14,7 @@ export default class Map extends React.Component {
   render() {
     return (
       <div className="map">
+        <NavHeader>Map</NavHeader>
         <div id="container" />
       </div>
     )

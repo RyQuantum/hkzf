@@ -1,10 +1,11 @@
 import React from 'react'
-import { NavBar, Toast } from 'antd-mobile';
+import { Toast } from 'antd-mobile';
 import axios from 'axios'
 import { List, AutoSizer } from 'react-virtualized'
 
 import './index.scss'
-import { getCurrentCity} from '../../utils';
+import { getCurrentCity } from '../../utils'
+import NavHeader from '../../components/NavHeader'
 
 const TITLE_HEIGHT = 36
 const NAME_HEIGHT = 50
@@ -117,12 +118,7 @@ export default class CityList extends React.Component {
   render() {
     return (
       <div className="citylist">
-        <NavBar
-          className="navbar"
-          mode="light"
-          icon={<i className="iconfont icon-back"/>}
-          onLeftClick={() => this.props.history.go(-1)}
-        >Cities</NavBar>
+        <NavHeader>Cities</NavHeader>
         <AutoSizer>
           {
             ({ width, height }) => (
