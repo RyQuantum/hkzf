@@ -34,7 +34,7 @@ class Login extends Component {
     return (
       <div className={styles.root}>
         {/* 顶部导航 */}
-        <NavHeader className={styles.navHeader}>账号登录</NavHeader>
+        <NavHeader className={styles.navHeader}>Login</NavHeader>
         <WhiteSpace size="xl" />
 
         {/* 登录表单 */}
@@ -45,7 +45,7 @@ class Login extends Component {
               <Field
                 className={styles.input}
                 name="username"
-                placeholder="请输入账号"
+                placeholder="Username"
               />
             </div>
             <ErrorMessage
@@ -59,7 +59,7 @@ class Login extends Component {
                 className={styles.input}
                 name="password"
                 type="password"
-                placeholder="请输入密码"
+                placeholder="Password"
               />
             </div>
             <ErrorMessage
@@ -69,13 +69,13 @@ class Login extends Component {
             />
             <div className={styles.formSubmit}>
               <button className={styles.submit} type="submit">
-                登 录
+                Submit
               </button>
             </div>
           </Form>
           <Flex className={styles.backHome}>
             <Flex.Item>
-              <Link to="/registe">还没有账号，去注册~</Link>
+              <Link to="/registe">Register</Link>
             </Flex.Item>
           </Flex>
         </WingBlank>
@@ -92,11 +92,11 @@ Login = withFormik({
   // 添加表单校验规则
   validationSchema: Yup.object().shape({
     username: Yup.string()
-      .required('账号为必填项')
-      .matches(REG_UNAME, '长度为5到8位，只能出现数字、字母、下划线'),
+      .required('Please input username')
+      .matches(REG_UNAME, '5 to 8 length, only accept numbers, letters, or underscore.'),
     password: Yup.string()
-      .required('密码为必填项')
-      .matches(REG_PWD, '长度为5到12位，只能出现数字、字母、下划线')
+      .required('Please input password')
+      .matches(REG_PWD, '5 to 12 length, only accept numbers, letters, or underscore.')
   }),
 
   // 表单的提交事件

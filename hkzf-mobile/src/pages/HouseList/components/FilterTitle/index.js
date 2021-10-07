@@ -6,10 +6,10 @@ import styles from './index.module.css'
 
 // 条件筛选栏标题数组：
 const titleList = [
-  { title: '区域', type: 'area' },
-  { title: '方式', type: 'mode' },
-  { title: '租金', type: 'price' },
-  { title: '筛选', type: 'more' }
+  { title: 'Area', type: 'area' },
+  { title: 'Mode', type: 'mode' },
+  { title: 'Price', type: 'price' },
+  { title: 'Filter', type: 'more' }
 ]
 
 /* 

@@ -9,16 +9,16 @@ import styles from './index.module.css'
 
 // 菜单数据
 const menus = [
-  { id: 1, name: '我的收藏', iconfont: 'icon-coll', to: '/favorate' },
-  { id: 2, name: '我的出租', iconfont: 'icon-ind', to: '/rent' },
-  { id: 3, name: '看房记录', iconfont: 'icon-record' },
+  { id: 1, name: 'Starred', iconfont: 'icon-coll', to: '/favorate' },
+  { id: 2, name: 'My rent', iconfont: 'icon-ind', to: '/rent' },
+  { id: 3, name: 'Records', iconfont: 'icon-record' },
   {
     id: 4,
-    name: '成为房主',
+    name: 'Become homeowner',
     iconfont: 'icon-identity'
   },
-  { id: 5, name: '个人资料', iconfont: 'icon-myinfo' },
-  { id: 6, name: '联系我们', iconfont: 'icon-cust' }
+  { id: 5, name: 'Information', iconfont: 'icon-myinfo' },
+  { id: 6, name: 'Contact us', iconfont: 'icon-cust' }
 ]
 
 // 默认头像
@@ -53,10 +53,10 @@ export default class Profile extends Component {
 
   // 退出
   logout = () => {
-    alert('提示', '是否确定退出?', [
-      { text: '取消' },
+    alert('Warning', 'Do you want to exit?', [
+      { text: 'Cancel' },
       {
-        text: '退出',
+        text: 'Exit',
         onPress: async () => {
           // 调用退出接口
           await API.post('/user/logout')
@@ -118,7 +118,7 @@ export default class Profile extends Component {
           <img
             className={styles.bg}
             src={BASE_URL + '/img/profile/bg.png'}
-            alt="背景图"
+            alt="background"
           />
           <div className={styles.info}>
             <div className={styles.myIcon}>
@@ -129,15 +129,15 @@ export default class Profile extends Component {
               />
             </div>
             <div className={styles.user}>
-              <div className={styles.name}>{nickname || '游客'}</div>
+              <div className={styles.name}>{nickname || 'Guest'}</div>
               {/* 登录后展示： */}
               {isLogin ? (
                 <>
                   <div className={styles.auth}>
-                    <span onClick={this.logout}>退出</span>
+                    <span onClick={this.logout}>Exit</span>
                   </div>
                   <div className={styles.edit}>
-                    编辑个人资料
+                    Edit information
                     <span className={styles.arrow}>
                       <i className="iconfont icon-arrow" />
                     </span>
@@ -151,7 +151,7 @@ export default class Profile extends Component {
                     inline
                     onClick={() => history.push('/login')}
                   >
-                    去登录
+                    Login
                   </Button>
                 </div>
               )}

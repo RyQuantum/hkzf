@@ -313,7 +313,7 @@ export default class Map extends React.Component {
     return (
       <div className={styles.map}>
         {/* 顶部导航栏组件 */}
-        <NavHeader>地图找房</NavHeader>
+        <NavHeader>Map</NavHeader>
         {/* 地图容器元素 */}
         <div id="container" className={styles.container} />
 
@@ -326,9 +326,9 @@ export default class Map extends React.Component {
           ].join(' ')}
         >
           <div className={styles.titleWrap}>
-            <h1 className={styles.listTitle}>房屋列表</h1>
+            <h1 className={styles.listTitle}>House list</h1>
             <Link className={styles.titleMore} to="/home/list">
-              更多房源
+              More
             </Link>
           </div>
 

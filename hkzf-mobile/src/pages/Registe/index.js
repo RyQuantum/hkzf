@@ -16,39 +16,39 @@ class Registe extends Component {
     return (
       <div className={styles.root}>
         {/* 顶部导航 */}
-        <NavHeader className={styles.navHeader}>注册</NavHeader>
+        <NavHeader className={styles.navHeader}>Register</NavHeader>
         <WhiteSpace size="xl" />
         <WingBlank>
           <form>
             <div className={styles.formItem}>
-              <label className={styles.label}>用户名</label>
-              <input className={styles.input} placeholder="请输入账号" />
+              <label className={styles.label}>Username</label>
+              <input className={styles.input} placeholder="Please input valid username" />
             </div>
             <div className={styles.formItem}>
-              <label className={styles.label}>密码</label>
+              <label className={styles.label}>Password</label>
               <input
                 className={styles.input}
                 type="password"
-                placeholder="请输入密码"
+                placeholder="Please input valid password"
               />
             </div>
             <div className={styles.formItem}>
-              <label className={styles.label}>重复密码</label>
+              <label className={styles.label}>Repeat</label>
               <input
                 className={styles.input}
                 type="password"
-                placeholder="请重新输入密码"
+                placeholder="Please input password again"
               />
             </div>
             <div className={styles.formSubmit}>
               <button className={styles.submit} type="submit">
-                注册
+                Submit
               </button>
             </div>
           </form>
           <Flex className={styles.backHome} justify="between">
-            <Link to="/home">点我回首页</Link>
-            <Link to="/login">已有账号，去登录</Link>
+            <Link to="/home">Home</Link>
+            <Link to="/login">Already have account? Login here</Link>
           </Flex>
         </WingBlank>
       </div>

@@ -164,10 +164,10 @@ export default class HouseDetail extends Component {
 
     if (!isLogin) {
       // 未登录
-      return alert('提示', '登录后才能收藏房源，是否去登录?', [
-        { text: '取消' },
+      return alert('Warning', 'You can add favorite after you login. Do you want to login first?', [
+        { text: 'Cannel' },
         {
-          text: '去登录',
+          text: 'Login',
           // 使用 replace 方法，解决登录后返回详情页面，再点击左上角返回按钮时
           // 需要点击两次的问题
           // onPress: () => history.push('/login', { from: location })
@@ -190,10 +190,10 @@ export default class HouseDetail extends Component {
 
       if (res.data.status === 200) {
         // 提示用户取消收藏
-        Toast.info('已取消收藏', 1, null, false)
+        Toast.info('Unfavored', 1, null, false)
       } else {
         // token 超时
-        Toast.info('登录超时，请重新登录', 2, null, false)
+        Toast.info('Login timeout. Retry please.', 2, null, false)
       }
     } else {
       // 未收藏，应该添加收藏
@@ -201,13 +201,13 @@ export default class HouseDetail extends Component {
       // console.log(res)
       if (res.data.status === 200) {
         // 提示用户收藏成功
-        Toast.info('已收藏', 1, null, false)
+        Toast.info('Favored', 1, null, false)
         this.setState({
           isFavorite: true
         })
       } else {
         // token 超时
-        Toast.info('登录超时，请重新登录', 2, null, false)
+        Toast.info('Login timeout. Retry please.', 2, null, false)
       }
     }
   }
@@ -341,38 +341,38 @@ export default class HouseDetail extends Component {
             <Flex.Item className={styles.infoPriceItem}>
               <div>
                 {price}
-                <span className={styles.month}>/月</span>
+                <span className={styles.month}>/Mth</span>
               </div>
-              <div>租金</div>
+              <div>Price</div>
             </Flex.Item>
             <Flex.Item className={styles.infoPriceItem}>
               <div>{roomType}</div>
-              <div>房型</div>
+              <div>Room type</div>
             </Flex.Item>
             <Flex.Item className={styles.infoPriceItem}>
-              <div>{size}平米</div>
-              <div>面积</div>
+              <div>{size} sq.m</div>
+              <div>Area</div>
             </Flex.Item>
           </Flex>
 
           <Flex className={styles.infoBasic} align="start">
             <Flex.Item>
               <div>
-                <span className={styles.title}>装修：</span>
-                精装
+                <span className={styles.title}>Type: </span>
+                Fine decoration
               </div>
               <div>
-                <span className={styles.title}>楼层：</span>
+                <span className={styles.title}>Floor: </span>
                 {floor}
               </div>
             </Flex.Item>
             <Flex.Item>
               <div>
-                <span className={styles.title}>朝向：</span>
+                <span className={styles.title}>Direction: </span>
                 {oriented.join('、')}
               </div>
               <div>
-                <span className={styles.title}>类型：</span>普通住宅
+                <span className={styles.title}>Housing type: </span>Ordinary
               </div>
             </Flex.Item>
           </Flex>
@@ -381,17 +381,17 @@ export default class HouseDetail extends Component {
         {/* 地图位置 */}
         <div className={styles.map}>
           <div className={styles.mapTitle}>
-            小区：
-            <span>{community}</span>
+          Neighbourhood:
+            <span> {community}</span>
           </div>
           <div className={styles.mapContainer} id="map">
-            地图
+            Map
           </div>
         </div>
 
         {/* 房屋配套 */}
         <div className={styles.about}>
-          <div className={styles.houseTitle}>房屋配套</div>
+          <div className={styles.houseTitle}>Housing allocation</div>
           {/* <HousePackage list={supporting} /> */}
           {/* <div className="title-empty">暂无数据</div> */}
 
@@ -404,31 +404,31 @@ export default class HouseDetail extends Component {
 
         {/* 房屋概况 */}
         <div className={styles.set}>
-          <div className={styles.houseTitle}>房源概况</div>
+          <div className={styles.houseTitle}>House holder</div>
           <div>
             <div className={styles.contact}>
               <div className={styles.user}>
-                <img src={BASE_URL + '/img/avatar.png'} alt="头像" />
+                <img src={BASE_URL + '/img/avatar.png'} alt="avator" />
                 <div className={styles.useInfo}>
-                  <div>王女士</div>
+                  <div>Mrs. Wong</div>
                   <div className={styles.userAuth}>
                     <i className="iconfont icon-auth" />
-                    已认证房主
+                    Verified
                   </div>
                 </div>
               </div>
-              <span className={styles.userMsg}>发消息</span>
+              <span className={styles.userMsg}>Send messages</span>
             </div>
 
             <div className={styles.descText}>
-              {description || '暂无房屋描述'}
+              {description || 'No description'}
             </div>
           </div>
         </div>
 
         {/* 推荐 */}
         <div className={styles.recommend}>
-          <div className={styles.houseTitle}>猜你喜欢</div>
+          <div className={styles.houseTitle}>You may also like</div>
           <div className={styles.items}>
             {recommendHouses.map(item => (
               <HouseItem {...item} key={item.id} />
@@ -444,16 +444,16 @@ export default class HouseDetail extends Component {
                 BASE_URL + (isFavorite ? '/img/star.png' : '/img/unstar.png')
               }
               className={styles.favoriteImg}
-              alt="收藏"
+              alt="mark"
             />
             <span className={styles.favorite}>
-              {isFavorite ? '已收藏' : '收藏'}
+              {isFavorite ? 'Marked' : 'Mark'}
             </span>
           </Flex.Item>
-          <Flex.Item>在线咨询</Flex.Item>
+          <Flex.Item>Consult</Flex.Item>
           <Flex.Item>
             <a href="tel:400-618-4000" className={styles.telephone}>
-              电话预约
+              Call to order
             </a>
           </Flex.Item>
         </Flex>

@@ -94,13 +94,13 @@ export default class RentAdd extends Component {
 
   // 取消编辑，返回上一页
   onCancel = () => {
-    alert('提示', '放弃发布房源?', [
+    alert('Warning', 'Give up releasing house?', [
       {
-        text: '放弃',
+        text: 'Discard',
         onPress: async () => this.props.history.go(-1)
       },
       {
-        text: '继续编辑'
+        text: 'Continue editing'
       }
     ])
   }
@@ -193,10 +193,10 @@ export default class RentAdd extends Component {
 
     if (res.data.status === 200) {
       // 发布成功
-      Toast.info('发布成功', 1, null, false)
+      Toast.info('Success', 1, null, false)
       this.props.history.push('/rent')
     } else {
-      Toast.info('服务器偷懒了，请稍后再试~', 2, null, false)
+      Toast.info('Timeout. Please retry later.', 2, null, false)
     }
   }
 
@@ -267,7 +267,7 @@ export default class RentAdd extends Component {
             cols={1}
             onChange={val => this.getValue('floor', val[0])}
           >
-            <Item arrow="horizontal">所在楼层</Item>
+            <Item arrow="horizontal">Floor</Item>
           </Picker>
           <Picker
             data={orientedData}
@@ -284,11 +284,11 @@ export default class RentAdd extends Component {
         {/* 房屋标题 */}
         <List
           className={styles.title}
-          renderHeader={() => '房屋标题'}
+          renderHeader={() => 'Title'}
           data-role="rent-list"
         >
           <InputItem
-            placeholder="请输入标题（例如：整租 小区名 2室 5000元）"
+            placeholder="Please input title (name, type, price, etc.)"
             value={title}
             onChange={val => this.getValue('title', val)}
           />
@@ -297,7 +297,7 @@ export default class RentAdd extends Component {
         {/* 房屋图像 */}
         <List
           className={styles.pics}
-          renderHeader={() => '房屋图像'}
+          renderHeader={() => 'Image'}
           data-role="rent-list"
         >
           <ImagePicker
@@ -311,7 +311,7 @@ export default class RentAdd extends Component {
         {/* 房屋配置 */}
         <List
           className={styles.supporting}
-          renderHeader={() => '房屋配置'}
+          renderHeader={() => 'Housing allocation'}
           data-role="rent-list"
         >
           <HousePackge select onSelect={this.handleSupporting} />
@@ -320,12 +320,12 @@ export default class RentAdd extends Component {
         {/* 房屋描述 */}
         <List
           className={styles.desc}
-          renderHeader={() => '房屋描述'}
+          renderHeader={() => 'Description'}
           data-role="rent-list"
         >
           <TextareaItem
             rows={5}
-            placeholder="请输入房屋描述信息"
+            placeholder="Please input house description"
             value={description}
             onChange={val => this.getValue('description', val)}
           />
@@ -333,10 +333,10 @@ export default class RentAdd extends Component {
 
         <Flex className={styles.bottom}>
           <Flex.Item className={styles.cancel} onClick={this.onCancel}>
-            取消
+            Cancel
           </Flex.Item>
           <Flex.Item className={styles.confirm} onClick={this.addHouse}>
-            提交
+            Submit
           </Flex.Item>
         </Flex>
       </div>

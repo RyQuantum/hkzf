@@ -57,9 +57,9 @@ const NAME_HEIGHT = 50
 const formatCityIndex = letter => {
   switch (letter) {
     case '#':
-      return '当前定位'
+      return 'Current location'
     case 'hot':
-      return '热门城市'
+      return 'hot city'
     default:
       return letter.toUpperCase()
   }
@@ -118,7 +118,7 @@ export default class CityList extends React.Component {
       localStorage.setItem('hkzf_city', JSON.stringify({ label, value }))
       this.props.history.go(-1)
     } else {
-      Toast.info('该城市暂无房源数据', 1, null, false)
+      Toast.info('No tenancy info of the city currently', 2, null, false)
     }
   }
 
@@ -195,7 +195,7 @@ export default class CityList extends React.Component {
     return (
       <div className="citylist">
         {/* 顶部导航栏 */}
-        <NavHeader>城市选择</NavHeader>
+        <NavHeader>Cities</NavHeader>
 
         {/* 城市列表 */}
         <AutoSizer>

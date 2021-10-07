@@ -92,7 +92,7 @@ export default class Search extends Component {
       <div className={styles.root}>
         {/* 搜索框 */}
         <SearchBar
-          placeholder="请输入小区或地址"
+          placeholder="Please input neighborhood or address"
           value={searchTxt}
           onChange={this.handleSearchTxt}
           showCancelButton={true}

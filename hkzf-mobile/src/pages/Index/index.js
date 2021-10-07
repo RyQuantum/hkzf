@@ -29,25 +29,25 @@ const navs = [
   {
     id: 1,
     img: Nav1,
-    title: '整租',
+    title: 'Full rent',
     path: '/home/list'
   },
   {
     id: 2,
     img: Nav2,
-    title: '合租',
+    title: 'Shared rent',
     path: '/home/list'
   },
   {
     id: 3,
     img: Nav3,
-    title: '地图找房',
+    title: 'Find in map',
     path: '/map'
   },
   {
     id: 4,
     img: Nav4,
-    title: '去出租',
+    title: 'Rent house',
     path: '/rent/add'
   }
 ]
@@ -215,7 +215,7 @@ export default class Index extends React.Component {
         {/* 租房小组 */}
         <div className="group">
           <h3 className="group-title">
-            租房小组 <span className="more">更多</span>
+            Groups <span className="more">More</span>
           </h3>
 
           {/* 宫格组件 */}
@@ -238,7 +238,7 @@ export default class Index extends React.Component {
 
         {/* 最新资讯 */}
         <div className="news">
-          <h3 className="group-title">最新资讯</h3>
+          <h3 className="group-title">News</h3>
           <WingBlank size="md">{this.renderNews()}</WingBlank>
         </div>
       </div>

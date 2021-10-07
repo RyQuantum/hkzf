@@ -102,20 +102,20 @@ export default class FilterMore extends Component {
                 {/* 条件内容 */}
                 <div style={props} className={styles.tags}>
                   <dl className={styles.dl}>
-                    <dt className={styles.dt}>户型</dt>
+                    <dt className={styles.dt}>Room type</dt>
                     <dd className={styles.dd}>
                       {this.renderFilters(roomType)}
                     </dd>
 
-                    <dt className={styles.dt}>朝向</dt>
+                    <dt className={styles.dt}>Direction</dt>
                     <dd className={styles.dd}>
                       {this.renderFilters(oriented)}
                     </dd>
 
-                    <dt className={styles.dt}>楼层</dt>
+                    <dt className={styles.dt}>Floor</dt>
                     <dd className={styles.dd}>{this.renderFilters(floor)}</dd>
 
-                    <dt className={styles.dt}>房屋亮点</dt>
+                    <dt className={styles.dt}>House lightspots</dt>
                     <dd className={styles.dd}>
                       {this.renderFilters(characteristic)}
                     </dd>
@@ -126,7 +126,7 @@ export default class FilterMore extends Component {
                 <FilterFooter
                   style={props}
                   className={styles.footer}
-                  cancelText="清除"
+                  cancelText="Clear"
                   onCancel={this.onCancel}
                   onOk={this.onOk}
                 />

@@ -76,7 +76,7 @@ export default class HouseList extends React.Component {
     // 提示房源数量
     // 解决了没有房源数据时，也弹窗提示的bug
     if (count !== 0) {
-      Toast.info(`共找到 ${count} 套房源`, 2, null, false)
+      Toast.info(`Found ${count} houses`, 2, null, false)
     }
 
     this.setState({
@@ -162,7 +162,7 @@ export default class HouseList extends React.Component {
     // 关键点：在数据加载完成后，再进行 count 的判断
     // 解决方式：如果数据加载中，则不展示 NoHouse 组件；而，但数据加载完成后，再展示 NoHouse 组件
     if (count === 0 && !isLoading) {
-      return <NoHouse>没有找到房源，请您换个搜索条件吧~</NoHouse>
+      return <NoHouse>No house found. Please change the filter.</NoHouse>
     }
 
     return (

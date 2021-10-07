@@ -20,22 +20,22 @@ const Profile = lazy(() => import('../Profile'))
 // TabBar 数据
 const tabItems = [
   {
-    title: '首页',
+    title: 'Home',
     icon: 'icon-ind',
     path: '/home'
   },
   {
-    title: '找房',
+    title: 'Find',
     icon: 'icon-findHouse',
     path: '/home/list'
   },
   {
-    title: '资讯',
+    title: 'News',
     icon: 'icon-infom',
     path: '/home/news'
   },
   {
-    title: '我的',
+    title: 'Profile',
     icon: 'icon-my',
     path: '/home/profile'
   }
